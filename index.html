@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STAGE ONE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <img src="./me.jpg" alt="Mubarak Yahaya" data-testid="slackDisplayImage" />
+    <h2 data-testid="slackUserName">
+      Mubarak Yahaya
+    </h2>
+    <p data-testid="currentDayOfTheWeek"></p>
+    <p data-testid="currentUTCTime"></p>
+    <p data-testid="myTrack">Track Frontend</p>
+    <a data-testid="githubURL" target="_blank" href="https://github.com/lilmubby/hng-stage1">
+      Source Code
+    </a>
+  </div>
+  <script>
+    const date = new Date();
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const currentDay = daysOfWeek[date.getUTCDay()];
+    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `Current Day: ${currentDay}`;
+    setInterval(() => {
+      const newDate = new Date();
+      const currentUTCTime = newDate.toISOString().split('T')[1].split('.')[0];
+      document.querySelector('[data-testid="currentUTCTime"]').textContent = `Current UTC Time: ${currentUTCTime}`;
+      
+    }, 1000);
+  </script>
+</body>
+</html>
